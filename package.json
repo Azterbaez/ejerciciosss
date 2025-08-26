@@ -1,0 +1,30 @@
+{
+  "name": "mi-proyecto",
+  "version": "1.0.0",
+  "description": "proyecto backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo\"error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "module",
+    "url": "git+https://github.com/Azterbaez/ejerciciosss.git"
+  },
+  "author": "azter baez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azterbaez/ejerciciosss/issues"
+  },
+  "homepage": "https://github.com/Azterbaez/ejerciciosss#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
+}

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {obtenerCategorias, obtenerCategoria,registrarCategoria} from '../controllers/categorias.controllers.js';
+import {obtenerCategorias, obtenerCategoria,registrarCategoria, eliminarCategoria} from '../controllers/categorias.controllers.js';
 
 const router = Router();
 
@@ -11,5 +11,8 @@ router.get ('/categoria/:id_categoria',obtenerCategoria);
 // Ruta para registrar una nueva Categoría
 router.post('/registrarcategoria', registrarCategoria);
 
+router.delete('/eliminarcategoria/:id_categoria',eliminarCategoria);
+
 export default router;
 
+  

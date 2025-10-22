@@ -32,11 +32,11 @@ export const obtenerCliente = async (req, res) => {
 };
 
 // Registrar un nuevo cliente
-export const registrarClientes = async (req, res) => {
+export const registrarCliente = async (req, res) => {
     try {
         const {primer_nombre , segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula } = req.body;
         const [result] = await pool.query(
-            'INSERT INTO categorias (primer_nombre , segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula) VALUES (?, ?, ?, ?, ?, ?, ?)', // los signos de interogacion tienen que ser la misma cantidad de los parametros
+            'INSERT INTO clientes (primer_nombre , segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula) VALUES (?, ?, ?, ?, ?, ?, ?)', // los signos de interogacion tienen que ser la misma cantidad de los parametros
             [primer_nombre , segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula]
         );
         res.status(201).json({ id_cliente: result.insertId });

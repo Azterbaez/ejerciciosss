@@ -1,4 +1,4 @@
-import { pool } from '../../db_connection.js';
+import { pool } from '../../db.connection.js';
 
 // Obtener todas las categorías
 export const obtenerUsuarios = async (req, res) => {
@@ -20,7 +20,7 @@ export const obtenerUsuario = async (req, res) => {
     const [result] = await pool.query('SELECT * FROM usuarios WHERE id_usuario= ?', [req.params.id_usuario])
     if (result.length <= 0) {
       return res.status(404).json({
-        mensaje: "Error al leer los datos. ID ${id_usuario} no encontrado."
+        mensaje: 'Error al leer los datos. ID ${id_usuario} no encontrado.'
       });
     }
     res.json(result[0]);
@@ -56,12 +56,12 @@ export const eliminarUsuario = async (req, res) =>  {
 
     if (result.affectedRows === 0) {
       return res.status(404).json({
-        mensaje: "Error al eliminar la usuarios. ID ${id_usuario} no fue encontrado."
+        mensaje: 'Error al eliminar la usuarios. ID ${id_usuario} no fue encontrado.'
       });
     }
 
     res.status(200).json({
-      mensaje: "La usuarios con ID ${id_usuario} fue eliminada correctamente."
+      mensaje: 'La usuarios con ID ${id_usuario} fue eliminada correctamente.'
     });
   } catch (error) {
     return res.status(500).json({
@@ -85,12 +85,12 @@ export const actualizarusuariosPatch = async (req, res) => {
 
     if (result.affectedRows === 0) {
       return res.status(404).json({
-        mensaje: "usuarios con ID ${id_usuario} no encontrada."
+        mensaje: 'usuarios con ID ${id_usuario} no encontrada.'
       });
     }
 
     res.status(200).json({
-      mensaje: "usuarios con ID ${id_usuario} actualizada."
+      mensaje: 'usuarios con ID ${id_usuario} actualizada.'
     });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al actualizar la usuarios.', error });

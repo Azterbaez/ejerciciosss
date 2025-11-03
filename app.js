@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import rutasCategorias from'./src/routes/categorias.routes.js';
 import rutasClientes from'./src/routes/clientes.routes.js';
+import rutasUsuarios from'./src/routes/usuarios.routes.js';
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true}));
 
 app.use('/api', rutasCategorias);
 app.use('/api', rutasClientes);
+app.use('/api', rutasUsuarios);
 
 app.use((req, res, next)=>{
     res.status(404).json({

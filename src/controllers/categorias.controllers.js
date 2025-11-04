@@ -68,3 +68,27 @@ export const eliminarCategoria = async (req,res) => {
         });
     }
 };
+
+export const actualizarCategoria = async (req, res) => {
+  try {
+    const { id_categoria } = req.params;
+    const datos = req.body;
+
+    const [result] = await pool.query(
+      'UPDATE categorias SET ? WHERE id_categoria = ?',
+      [datos, id_categoria]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        mensaje: "categorias con ID ${id_categoria} no encontrada."
+      });
+    }
+
+    res.status(200).json({
+      mensaje: "categorias con ID ${id_categoria} actualizada."
+    });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al actualizar la categorias.', error });
+  }
+};

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {obtenerCategorias, obtenerCategoria,registrarCategoria, eliminarCategoria} from '../controllers/categorias.controllers.js';
+import {obtenerCategorias, obtenerCategoria,registrarCategoria, eliminarCategoria, actualizarCategoria} from '../controllers/categorias.controllers.js';
 
 const router = Router();
 
@@ -12,6 +12,11 @@ router.get ('/categoria/:id_categoria',obtenerCategoria);
 router.post('/registrarcategoria', registrarCategoria);
 
 router.delete('/eliminarcategoria/:id_categoria',eliminarCategoria);
+
+// Ruta para actualizar una Categoría por su ID
+router.patch('/actualizarcategoria/:id_categoria', actualizarCategoria);
+
+
 
 export default router;
 

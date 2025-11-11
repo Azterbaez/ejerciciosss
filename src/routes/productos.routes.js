@@ -5,7 +5,6 @@ const router = Router();
 
 router.get('/productos', obtenerProductos);
 
-
 // Rutas
 router.get('/productos/:id_producto', obtenerProducto);
 

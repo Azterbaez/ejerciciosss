@@ -11,6 +11,7 @@ import rutasProductos from'./src/routes/productos.routes.js';
 
 
 
+
 const app = express();
 
 app.use(cors({
@@ -18,8 +19,8 @@ app.use(cors({
     allowedHeaders: ['content-Type'],
 }));
 
-app.use(express.json({ limit: '10mb'}));
-app.use(express.urlencoded({ limit: '10mb', extended: true}));
+app.use(express.json({ limit: '10mb' })); // Aumenta a 10 MB
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 app.use('/api', rutasCategorias);
 app.use('/api', rutasClientes);
@@ -28,6 +29,8 @@ app.use('/api', rutasEmpleados);
 app.use('/api', rutasVentas);
 app.use('/api', rutasDetallesVentas);
 app.use('/api', rutasProductos);
+
+
 
 app.use((req, res, next)=>{
     res.status(404).json({

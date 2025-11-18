@@ -13,11 +13,40 @@ export const obtenerUsuarios = async (req, res) => {
   }
 };
 
+export const verificarUsuario = async (req, res) => {
+  try {
+    const { usuario, contrasena } = req.body;
+
+    if (!usuario || !contrasena) {
+      return res.status(400).json({
+        mensaje: "Debe enviar usuario y contrasena."
+      });
+    }
+
+    const [result] = await pool.query(
+      'SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?',
+      [usuario, contrasena]
+    );
+
+    if (result.length > 0) {
+      return res.json(true);   // Usuario correcto
+    } else {
+      return res.json(false);  // Datos incorrectos
+    }
+
+  } catch (error) {
+    return res.status(500).json({
+      mensaje: 'Error al verificar el usuario.',
+      error
+    });
+  }
+};
+
 // Obtener una Usuario por su ID
 export const obtenerUsuario = async (req, res) => {
   try {
     const id_usuario = req.params.id_usuario;
-    const [result] = await pool.query('SELECT * FROM usuarios WHERE id_usuario= ?', [req.params.id_usuario])
+    const [result] = await pool.query('SELECT * FROM usuarios WHERE id_usuario= ?', [id_usuario])
     if (result.length <= 0) {
       return res.status(404).json({
         mensaje: 'Error al leer los datos. ID ${id_usuario} no encontrado.'

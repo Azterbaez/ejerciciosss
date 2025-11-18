@@ -32,7 +32,7 @@ export const obtenerProducto = async (req, res) => {
 };
 
 // Registrar una nueva Compra
-export const registrarCompra = async (req, res) => {
+export const registrarProducto= async (req, res) => {
   try {
     const { nombre_producto, descripcion_producto, id_categoria, precio_unitario, stock, imagen } = req.body;
     const [result] = await pool.query(
